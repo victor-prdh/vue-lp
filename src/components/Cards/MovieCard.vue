@@ -1,35 +1,33 @@
 <script setup lang="ts">
+import type { BasicMovieInterface } from '@/Interfaces';
+
+const IMG_URL = "https://image.tmdb.org/t/p/original/"
+
 defineProps<{
-  title: string;
+	movie: BasicMovieInterface;
 }>();
+
+function formatOverview(overview: string): string {
+	var noDesc = `Ce film n'a pas de description`;
+
+	if (overview === '') {
+		return noDesc	
+	}
+
+	return overview.slice(0, 130).concat('...') ?? noDesc;
+}
 </script>
 
 <template>
-  <div class="greetings">
-    <h1 class="green">{{ title }}</h1>
-  </div>
+	<v-card class="mx-auto w-100" >
+		<v-img :src="IMG_URL + movie.backdrop_path" height="300px" cover></v-img>
+
+		<v-card-title>
+			{{ movie.title }}
+		</v-card-title>
+
+		<v-card-text >
+			{{ formatOverview(movie.overview) }}
+		</v-card-text>
+	</v-card>
 </template>
-
-<style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  top: -10px;
-}
-
-h3 {
-  font-size: 1.2rem;
-}
-
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-}
-</style>

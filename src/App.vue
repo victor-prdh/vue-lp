@@ -10,7 +10,11 @@ import { RouterLink, RouterView } from "vue-router";
       </nav>
   </header>
 
-  <RouterView />
+  <v-container>
+    <RouterView />
+  </v-container>
+
+  
 </template>
 
 <style scoped>
