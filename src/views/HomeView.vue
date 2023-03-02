@@ -31,17 +31,18 @@ window.onscroll = () => {
 
 	if (bottomOfWindow && !state.isLoading) {
 		fetchMoreMovies()
-		console.log('isLoading');
 	}
 };
 </script>
 
 <template>
-	<main style="margin-bottom: 50px;">
+	<main>
 		<h1>Home</h1>
 		<MovieListing :movies="state.movies"></MovieListing>
 
-		<v-progress-circular indeterminate v-if="state.isLoading"></v-progress-circular>
+		<div class="d-flex w-100 justify-center" style="margin: 50px 0;">
+			<v-progress-circular indeterminate v-if="state.isLoading"></v-progress-circular>
+		</div>
 
 	</main>
 </template>

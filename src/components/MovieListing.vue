@@ -11,5 +11,4 @@ const props = defineProps({movies: Array<BasicMovieInterface>});
             <MovieCard :movie="movie"></MovieCard>
         </v-col>
     </v-row>
-    
 </template>
